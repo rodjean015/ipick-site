@@ -1,4 +1,5 @@
 import Image from "next/image";
+import StepsComponent from "../components/StepsComponent";
 
 export default function Home() {
   return (
@@ -58,16 +59,24 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="about" className="h-screen py-20 text-center">
+      <section id="about" className="py-20 text-center bg-white text-black">
         <h2 className="text-3xl font-semibold">About iPick</h2>
-        <p className="text-gray-600 mt-4">
-          Our product is fast, reliable, and easy to use.
+        <p className="text-600 mt-4 p-4 max-w-2xl mx-auto">
+          The iPick Mobile App is designed to provide a seamless and
+          user-friendly experience for both passengers and drivers. It is
+          divided into two key features: iPick Passenger and iPick Driver, each
+          tailored to meet the specific needs of its users.
         </p>
+
+        <div>
+          <h2 className="text-center text-2xl font-bold mb-6">How It Works</h2>
+          <StepsComponent />
+        </div>
       </section>
 
       <footer id="contact" className="py-20 text-center bg-gray-200">
         <h2 className="text-3xl font-semibold">Get in Touch</h2>
-        <p className="text-gray-600 mt-4">
+        <p className="text-gray-800 mt-4">
           Have questions? Contact us anytime.
         </p>
       </footer>

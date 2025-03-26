@@ -57,3 +57,7 @@ body {
   background-size: 200% 200%;
   animation: gradientAnimation 60s ease infinite;
 }
+
+.filter-green {
+  filter: hue-rotate(120deg) saturate(2) brightness(1.2);
+}

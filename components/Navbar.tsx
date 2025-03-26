@@ -37,7 +37,11 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`bg-green-700 text-white p-4 fixed top-0 w-full z-50 transition-transform duration-300 ${
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.36)",
+        backdropFilter: "blur(5px)",
+      }}
+      className={`text-white p-4 fixed top-0 w-full z-50 transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -100,7 +104,7 @@ const Navbar: React.FC = () => {
         {/* "Be Our Partner" Button */}
         <Link
           href="https://portal.ipick.ph"
-          className="hidden md:flex items-center gap-2 bg-gray-700 text-gray-200 px-7 py-2 rounded-full font-semibold hover:bg-gray-300 hover:text-black transition"
+          className="hidden md:flex items-center gap-2 bg-green-700 text-gray-200 px-7 py-2 rounded-full font-semibold hover:bg-gray-300 hover:text-black transition"
         >
           <FiUser className="text-xl" /> Be Our Partner
         </Link>
