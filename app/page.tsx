@@ -122,6 +122,60 @@ export default function Home() {
         </div >
       </section >
 
+
+      <section id="why-choose" className="bg-white py-20 text-center text-black">
+        <h2 className="text-3xl font-semibold">Why Choose iPick?</h2>
+        <p className="mt-4 p-4 max-w-3xl mx-auto text-gray-700">
+          Book a ride with ease using our mobile app. Whether you’re going to work, exploring the city, or catching a flight, iPick ensures your journey is seamless and comfortable.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 max-w-6xl mx-auto">
+          {/* Card 1 */}
+          <div className="bg-gray-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-200 rounded-full p-3 mb-3">
+              <img src="/assets/insurance.png" alt="Safety" className="w-10 h-10" />
+            </div>
+            <h3 className="font-bold text-lg">Safety First</h3>
+            <p className="text-sm text-gray-700">
+              Your safety is our priority. Experienced drivers and advanced features ensure a smooth, worry-free ride.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="bg-gray-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-200 rounded-full p-3 mb-3">
+              <img src="/assets/affordable.png" alt="Luxury" className="w-10 h-10" />
+            </div>
+            <h3 className="font-bold text-lg">Affordable Luxury</h3>
+            <p className="text-sm text-gray-700">
+              Premium service at prices that won’t break the bank—luxury made affordable.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="bg-gray-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-200 rounded-full p-3 mb-3">
+              <img src="/assets/fingertips.png" alt="Simplicity" className="w-10 h-10" />
+            </div>
+            <h3 className="font-bold text-lg">Simplicity at Your Fingertips</h3>
+            <p className="text-sm text-gray-700">
+              Booking a ride is effortless—just open the app, set your destination, and we handle the rest.
+            </p>
+          </div>
+
+          {/* Card 4 */}
+          <div className="bg-gray-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-200 rounded-full p-3 mb-3">
+              <img src="/assets/seatbelt.png" alt="Comfort" className="w-10 h-10" />
+            </div>
+            <h3 className="font-bold text-lg">Elevated Comfort</h3>
+            <p className="text-sm text-gray-700">
+              Travel in style with our top-notch fleet, whether for business or a night out.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <footer id="contact" className="py-20 text-center bg-gray-200">
         <h2 className="text-3xl font-semibold">Get in Touch</h2>
         <p className="text-gray-800 mt-4">
