@@ -15,14 +15,14 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-100 py-12">
+    <footer className="bg-green-800 text-gray-100 py-12">
       <div className="container mx-auto px-6 lg:px-12">
         {/* 🔹 Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
           {/* 🔹 Company Info */}
           <div>
             <h2 className="text-2xl font-bold text-white">iPick</h2>
-            <p className="text-gray-400 mt-3">
+            <p className="text-gray-100 mt-3">
               A smarter way to ride. Reliable, affordable, and at your service
               24/7.
             </p>
@@ -37,7 +37,7 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={`/${text.toLowerCase().replace(/\s/g, "-")}`}
-                      className="text-gray-400 hover:text-white transition duration-300"
+                      className="text-gray-100 hover:text-gray-400 transition duration-300"
                     >
                       {text}
                     </a>
@@ -56,7 +56,7 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={`/${text.toLowerCase().replace(/\s/g, "-")}`}
-                      className="text-gray-400 hover:text-white transition duration-300"
+                      className="text-gray-100 hover:text-gray-400 transition duration-300"
                     >
                       {text}
                     </a>
@@ -76,7 +76,7 @@ const Footer = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition duration-300"
+                  className="text-gray-100 hover:text-gray-400 transition duration-300"
                 >
                   <FontAwesomeIcon icon={icon} className="text-2xl" />
                 </a>
@@ -109,10 +109,10 @@ const Footer = () => {
         </div>
 
         {/* 🔹 Divider */}
-        <div className="border-t border-gray-700 my-6"></div>
+        <div className="border-t border-gray-300 my-6"></div>
 
         {/* 🔹 Bottom Copyright */}
-        <p className="text-gray-400 text-center text-sm">
+        <p className="text-gray-100 text-center text-sm">
           &copy; {new Date().getFullYear()} iPick. All rights reserved.
         </p>
       </div>

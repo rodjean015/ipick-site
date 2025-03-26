@@ -92,7 +92,7 @@ export default function Home() {
       </header>
 
       <section id="about" className="py-20 text-center bg-white text-black">
-        <h2 className="text-3xl font-semibold">About iPick</h2>
+        <h2 className="text-3xl font-semibold">Discover iPick</h2>
         <p className="text-600 mt-4 p-4 max-w-2xl mx-auto">
           The iPick Mobile App is designed to provide a seamless and
           user-friendly experience for both passengers and drivers. It is
