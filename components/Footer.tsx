@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
-  faTwitter,
+  faTiktok,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +9,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
   const socialMedia = [
     { href: "https://facebook.com", icon: faFacebookF },
-    { href: "https://twitter.com", icon: faTwitter },
+    { href: "https://twitter.com", icon: faTiktok },
     { href: "https://instagram.com", icon: faInstagram },
     { href: "mailto:support@ipick.com", icon: faEnvelope },
   ];

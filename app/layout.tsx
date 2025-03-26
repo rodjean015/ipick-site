@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import "@fontsource/montserrat";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import CookieConsent from "@/components/CookieConsent";
+import Footer from "@/components/Footer";
 config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -21,6 +23,8 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <CookieConsent />
+        <Footer />
       </body>
     </html>
   );

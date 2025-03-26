@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center">
         {/* Brand Name */}
         <button onClick={() => handleScroll("home")}>
-          <div className="bg-white px-2 py-2 rounded-full transition">
+          <div className="bg-green-700 px-2 py-2 rounded-full transition">
             {/* White background with padding */}
             <Image
               src="/favicon.ico" // Replace with your actual logo path
