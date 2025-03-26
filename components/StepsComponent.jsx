@@ -45,11 +45,11 @@ const steps = [
   
   const StepCard = ({ step }) => {
     return (
-      <div className="rounded-lg shadow-md aspect-square flex flex-col items-center justify-center p-4 text-center relative">
-        <span className="absolute top-4 left-4 bg-green-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">
+      <div className="bg-gray-100 rounded-lg shadow-md aspect-square flex flex-col items-center justify-center p-4 text-center relative">
+        <span className="absolute top-4 left-4 bg-green-700 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">
           {step.id}
         </span>
-        <img src={step.image} alt={step.title} className="w-12 h-12 mb-3 filter-green" />
+        <img src={step.image} alt={step.title} className="w-12 h-12 mb-3" />
         <h3 className="font-bold text-lg">{step.title}</h3>
         <p className="text-sm text-gray-800">{step.description}</p>
       </div>

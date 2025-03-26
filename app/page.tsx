@@ -1,35 +1,68 @@
 import Image from "next/image";
 import StepsComponent from "../components/StepsComponent";
+import "@fontsource/montserrat/900.css";
+import FeatureCard from "@/components/FeatureCard";
+import Footer from "@/components/Footer";
+
+const features = [
+  {
+    image: "/assets/insurance.png",
+    alt: "Safety",
+    title: "Safety First",
+    description:
+      "Your safety is our priority. Experienced drivers and advanced features ensure a smooth, worry-free ride.",
+  },
+  {
+    image: "/assets/affordable.png",
+    alt: "Luxury",
+    title: "Affordable Luxury",
+    description:
+      "Premium service at prices that won’t break the bank—luxury made affordable.",
+  },
+  {
+    image: "/assets/fingertips.png",
+    alt: "Simplicity",
+    title: "Simplicity at Your Fingertips",
+    description:
+      "Booking a ride is effortless—just open the app, set your destination, and we handle the rest.",
+  },
+  {
+    image: "/assets/seatbelt.png",
+    alt: "Comfort",
+    title: "Elevated Comfort",
+    description:
+      "Travel in style with our top-notch fleet, whether for business or a night out.",
+  },
+];
 
 export default function Home() {
   return (
     <div>
       <header
         id="home"
-        className="h-screen flex flex-col justify-center items-center text-center px-4 bg-cover bg-center"
-        style={{ backgroundImage: "url('/assets/taxi-bg.jpg')" }}
+        className="h-screen flex flex-col justify-center items-center text-center px-4 bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: "url('/assets/car.png')" }}
       >
-        <div className="absolute inset-0 animated-gradient opacity-80"></div>
+        <div className="absolute inset-0 bg-black opacity-80"></div>
         <div className="relative z-10">
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-shadow-black text-center px-4">
+          <h1 className="font-[900] text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-shadow-black text-center px-4">
             <span className="animate-gradient">iPick. </span>
             Bringing you to Places.
           </h1>
 
           {/* Subtext */}
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-900 font-bold mt-4 text-center px-4">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-green-700 font-bold mt-4 text-center px-4">
             Anytime, Anywhere, iPick is There.
           </p>
 
           {/* Download Buttons */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6">
-            {/* Google Play Button */}
             <a
               href="https://play.google.com/store/apps/details?id=com.ipick.starter&hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition transform hover:-translate-y-1 hover:opacity-80"
+              className="hover:opacity-80"
             >
               <Image
                 src="/androidDownload.svg"
@@ -40,12 +73,11 @@ export default function Home() {
               />
             </a>
 
-            {/* App Store Button */}
             <a
               href="https://apps.apple.com/ph/app/ipick-booking-services/id6738897138"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition transform hover:-translate-y-1 hover:opacity-80"
+              className="hover:opacity-80"
             >
               <Image
                 src="/iosDownload.svg"
@@ -74,12 +106,32 @@ export default function Home() {
         </div>
       </section>
 
-      <footer id="contact" className="py-20 text-center bg-gray-200">
-        <h2 className="text-3xl font-semibold">Get in Touch</h2>
-        <p className="text-gray-800 mt-4">
-          Have questions? Contact us anytime.
+      <section
+        id="why-choose"
+        className="bg-gray-200 py-20 text-center text-black"
+      >
+        <h2 className="text-3xl font-semibold">Why Choose iPick?</h2>
+        <p className="mt-4 p-4 max-w-3xl mx-auto text-gray-700">
+          Book a ride with ease using our mobile app. Whether you’re going to
+          work, exploring the city, or catching a flight, iPick ensures your
+          journey is seamless and comfortable.
         </p>
-      </footer>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 max-w-6xl mx-auto">
+          {features.map((feature, index) => (
+            <FeatureCard
+              key={index}
+              image={feature.image}
+              alt={feature.alt}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
+      </section>
+      <section id="help">
+        <Footer />
+      </section>
     </div>
   );
 }

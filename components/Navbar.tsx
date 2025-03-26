@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
   return (
     <nav
       style={{
-        backgroundColor: "rgba(0, 0, 0, 0.36)",
+        backgroundColor: "rgba(73, 73, 73, 0.36)",
         backdropFilter: "blur(5px)",
       }}
       className={`text-white p-4 fixed top-0 w-full z-50 transition-transform duration-300 ${
@@ -62,13 +62,8 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Menu (Centered Links) */}
         <ul className="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
-          <li>
-            <button
-              onClick={() => handleScroll("about")}
-              className="hover:text-gray-300 font-semibold transition"
-            >
-              About
-            </button>
+          <li className="hover:text-gray-300 font-semibold transition">
+            <button onClick={() => handleScroll("about")}>About</button>
           </li>
           <Dropdown
             title="Locations"
@@ -91,20 +86,15 @@ const Navbar: React.FC = () => {
               { label: "Coupon & Discounts" },
             ]}
           />
-          <li>
-            <button
-              onClick={() => handleScroll("contact")}
-              className="hover:text-gray-300 font-semibold transition"
-            >
-              Help Centre
-            </button>
+          <li className="hover:text-gray-300 font-semibold transition">
+            <button onClick={() => handleScroll("help")}>Help Centre</button>
           </li>
         </ul>
 
         {/* "Be Our Partner" Button */}
         <Link
           href="https://portal.ipick.ph"
-          className="hidden md:flex items-center gap-2 bg-green-700 text-gray-200 px-7 py-2 rounded-full font-semibold hover:bg-gray-300 hover:text-black transition"
+          className="hidden md:flex items-center gap-2 bg-green-700 text-gray-200 px-7 py-2 rounded-full font-semibold hover:bg-gray-300 hover:text-black transition-color duration-300"
         >
           <FiUser className="text-xl" /> Be Our Partner
         </Link>
@@ -120,7 +110,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden text-white p-4 space-y-4">
+        <div className="md:hidden text-white p-4 space-y-4 font-semibold">
           <ul className="flex flex-col items-center space-y-4">
             <li>
               <button
@@ -165,7 +155,7 @@ const Navbar: React.FC = () => {
           <div className="text-center">
             <Link
               href="/driver"
-              className="block w-full bg-gray-700 text-gray-200 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 hover:text-black transition"
+              className="block w-full bg-green-700 text-gray-200 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 hover:text-black transition-color duration-300"
               onClick={() => setIsOpen(false)}
             >
               Be Our Partner
