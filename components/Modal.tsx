@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { FiX } from 'react-icons/fi';
-import Map, { Marker } from 'react-map-gl/maplibre';
-import 'maplibre-gl/dist/maplibre-gl.css';
-
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -24,23 +22,40 @@ const LocationModal: React.FC<ModalProps> = ({
   onClose,
   location
 }) => {
-  if (!isOpen) return null;
-
   // Default coordinates if not provided (centered on Philippines)
   const defaultCoordinates = {
     latitude: 14.5995,
     longitude: 120.9842
   };
+
   const mapCoordinates = location.coordinates || defaultCoordinates;
+
+  // Use useMemo to memoize the center and libraries
+  const center = useMemo(() => ({
+    lat: mapCoordinates.latitude,
+    lng: mapCoordinates.longitude
+  }), [mapCoordinates]);
+
+  const libraries = useMemo(() => ['places'], []);
+
+  // Use useLoadScript hook
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
+    libraries: libraries as any
+  });
+
+  if (!isOpen) return null;
+
+  if (loadError) return <div>Error loading maps</div>;
+  if (!isLoaded) return <div>Loading...</div>;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Overlay */}
       <div
-        className="absolute inset-0  bg-opacity-40 backdrop-blur-sm"
+        className="absolute inset-0 bg-opacity-40 backdrop-blur-sm"
         onClick={onClose}
       ></div>
-
       {/* Modal Content */}
       <div className="relative bg-white rounded-lg w-full max-w-4xl mx-auto shadow-xl overflow-hidden">
         {/* Close Icon Button */}
@@ -50,34 +65,27 @@ const LocationModal: React.FC<ModalProps> = ({
         >
           <FiX size={20} />
         </button>
-
         <div className="flex flex-col md:flex-row">
           {/* Map Section */}
           <div className="w-full md:w-1/2 h-64 md:h-[500px]">
-            <Map
-              initialViewState={{
-                latitude: mapCoordinates.latitude,
-                longitude: mapCoordinates.longitude,
-                zoom: 12
-              }}
-              style={{ width: '100%', height: '100%' }}
-              mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json?labelTextSize=12&labelTextColor=%23000000&landColor=%23f0f0f0&waterColor=%23a0c8f0&roadColor=%23ffffff&roadWidth=1.5"
+            <GoogleMap
+              mapContainerStyle={{ width: '100%', height: '100%' }}
+              center={center}
+              zoom={12}
             >
               <Marker
-                longitude={mapCoordinates.longitude}
-                latitude={mapCoordinates.latitude}
-              >
-                <div className="w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow-lg"></div>
-              </Marker>
-            </Map>
+                position={{
+                  lat: mapCoordinates.latitude,
+                  lng: mapCoordinates.longitude
+                }}
+              />
+            </GoogleMap>
           </div>
-
           {/* Location Details */}
           <div className="w-full md:w-1/2 p-6 flex flex-col">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">
               {location.title}
             </h3>
-
             {location.image && (
               <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
                 <img
@@ -87,25 +95,21 @@ const LocationModal: React.FC<ModalProps> = ({
                 />
               </div>
             )}
-
             {location.address && (
               <p className="text-gray-600 mb-2">
                 <strong>Address:</strong> {location.address}
               </p>
             )}
-
             {location.hours && (
               <p className="text-gray-600 mb-2">
                 <strong>Hours:</strong> {location.hours}
               </p>
             )}
-
             {location.description && (
               <p className="text-gray-600 mb-4 flex-grow">
                 {location.description}
               </p>
             )}
-
             {/* Close Button */}
             <button
               onClick={onClose}
