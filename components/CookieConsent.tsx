@@ -43,23 +43,24 @@ const CookieConsent = () => {
           </a>
         </p>
 
-        {/* Accept Button */}
-        <button
-          onClick={handleAccept}
-          className="bg-green-700 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition duration-300 ml-4"
-          aria-label="Accept cookies"
-        >
-          Accept
-        </button>
+        {/* Button Container */}
+        <div className="flex items-center mt-6">
+          <button
+            onClick={handleAccept}
+            className="bg-green-700 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition duration-300 ml-4"
+            aria-label="Accept cookies"
+          >
+            Accept
+          </button>
 
-        {/* Close Button (X) */}
-        <button
-          onClick={handleClose}
-          className="ml-2 text-gray-400 hover:text-gray-200 transition duration-300"
-          aria-label="Close cookie consent banner"
-        >
-          ✖
-        </button>
+          <button
+            onClick={handleClose}
+            className="ml-2 bg-gray-700 hover:bg-gray-500 text-white px-4 py-2 rounded-md transition duration-300"
+            aria-label="Decline cookies"
+          >
+            Decline
+          </button>
+        </div>
       </div>
     )
   );

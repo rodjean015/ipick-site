@@ -1,15 +1,21 @@
 "use client"; // Needed for state management in Next.js App Router
-
 import { useState, useEffect } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
+import { motion, AnimatePresence } from "framer-motion";
+
+interface MenuItem {
+  label: string;
+  isHeader?: boolean;
+  onClick?: () => void; // Add optional onClick handler
+}
 
 interface DropdownProps {
   title: string;
-  menuItems: { label: string; isHeader?: boolean }[];
+  menuItems: MenuItem[];
+  onLocationSelect?: (location: any) => void; // Optional prop for modal interaction
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ title, menuItems }) => {
+const Dropdown: React.FC<DropdownProps> = ({ title, menuItems, onLocationSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Close dropdown when scrolling
@@ -18,6 +24,17 @@ const Dropdown: React.FC<DropdownProps> = ({ title, menuItems }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Handle menu item click
+  const handleItemClick = (item: MenuItem) => {
+    // If the item has an onClick handler, call it
+    if (item.onClick) {
+      item.onClick();
+    }
+
+    // Close the dropdown
+    setIsOpen(false);
+  };
 
   return (
     <div className="relative">
@@ -52,6 +69,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, menuItems }) => {
                   <li
                     key={index}
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => handleItemClick(item)}
                   >
                     {item.label}
                   </li>
