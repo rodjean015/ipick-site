@@ -36,12 +36,12 @@ const LocationModal: React.FC<ModalProps> = ({
     lng: mapCoordinates.longitude
   }), [mapCoordinates]);
 
-  const libraries = useMemo(() => ['places'], []);
 
   // Use useLoadScript hook
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
-    libraries: libraries as any
+    version: 'weekly',
+    libraries: ["places", "marker"],
   });
 
   if (!isOpen) return null;
