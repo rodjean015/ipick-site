@@ -39,9 +39,7 @@ const LocationModal: React.FC<ModalProps> = ({ isOpen, onClose, location }) => {
 
   // Use useLoadScript hook
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey:
-      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
-      "AIzaSyBTVoAYJ7vxQ5cSiIRYDc7_b0nJB-X6QR8",
+    googleMapsApiKey: "AIzaSyBTVoAYJ7vxQ5cSiIRYDc7_b0nJB-X6QR8",
     libraries: libraries as any,
   });
 
@@ -76,7 +74,7 @@ const LocationModal: React.FC<ModalProps> = ({ isOpen, onClose, location }) => {
               options={{
                 disableDefaultUI: true,
                 zoomControl: false,
-                streetViewControl: false, 
+                streetViewControl: false,
                 mapTypeControl: false,
                 fullscreenControl: false,
               }}
@@ -84,7 +82,7 @@ const LocationModal: React.FC<ModalProps> = ({ isOpen, onClose, location }) => {
               <Marker
                 position={center}
                 icon={{
-                  url: './assets/marker-orange.png', // Path to the custom marker
+                  url: "./assets/marker-orange.png", // Path to the custom marker
                   scaledSize: new window.google.maps.Size(40, 40), // Resizes the marker
                 }}
               />
