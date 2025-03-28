@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
-import { FiX } from 'react-icons/fi';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import React, { useMemo } from "react";
+import { FiX } from "react-icons/fi";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -17,31 +17,32 @@ interface ModalProps {
   };
 }
 
-const LocationModal: React.FC<ModalProps> = ({
-  isOpen,
-  onClose,
-  location
-}) => {
+const LocationModal: React.FC<ModalProps> = ({ isOpen, onClose, location }) => {
   // Default coordinates if not provided (centered on Philippines)
   const defaultCoordinates = {
     latitude: 14.5995,
-    longitude: 120.9842
+    longitude: 120.9842,
   };
 
   const mapCoordinates = location.coordinates || defaultCoordinates;
 
   // Use useMemo to memoize the center and libraries
-  const center = useMemo(() => ({
-    lat: mapCoordinates.latitude,
-    lng: mapCoordinates.longitude
-  }), [mapCoordinates]);
+  const center = useMemo(
+    () => ({
+      lat: mapCoordinates.latitude,
+      lng: mapCoordinates.longitude,
+    }),
+    [mapCoordinates]
+  );
 
-  const libraries = useMemo(() => ['places'], []);
+  const libraries = useMemo(() => ["places"], []);
 
   // Use useLoadScript hook
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
-    libraries: libraries as any
+    googleMapsApiKey:
+      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+      "AIzaSyBTVoAYJ7vxQ5cSiIRYDc7_b0nJB-X6QR8",
+    libraries: libraries as any,
   });
 
   if (!isOpen) return null;
@@ -53,7 +54,7 @@ const LocationModal: React.FC<ModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Overlay */}
       <div
-        className="absolute inset-0 bg-opacity-40 backdrop-blur-sm"
+        className="absolute inset-0 bg-opacity-50 backdrop-blur-lg"
         onClick={onClose}
       ></div>
       {/* Modal Content */}
@@ -69,14 +70,22 @@ const LocationModal: React.FC<ModalProps> = ({
           {/* Map Section */}
           <div className="w-full md:w-1/2 h-64 md:h-[500px]">
             <GoogleMap
-              mapContainerStyle={{ width: '100%', height: '100%' }}
+              mapContainerStyle={{ width: "100%", height: "100%" }}
               center={center}
               zoom={12}
+              options={{
+                disableDefaultUI: true,
+                zoomControl: false,
+                streetViewControl: false, 
+                mapTypeControl: false,
+                fullscreenControl: false,
+              }}
             >
               <Marker
-                position={{
-                  lat: mapCoordinates.latitude,
-                  lng: mapCoordinates.longitude
+                position={center}
+                icon={{
+                  url: './assets/marker-orange.png', // Path to the custom marker
+                  scaledSize: new window.google.maps.Size(40, 40), // Resizes the marker
                 }}
               />
             </GoogleMap>

@@ -6,6 +6,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import CookieConsent from "@/components/CookieConsent";
 import Footer from "@/components/Footer";
+import Loader from "@/components/Loader"; // Import the loader
+
 config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -21,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Loader /> {/* Loader is now always on top */}
         <Navbar />
         {children}
         <CookieConsent />

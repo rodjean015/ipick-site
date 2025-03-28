@@ -2,7 +2,6 @@ import Image from "next/image";
 import StepsComponent from "../components/StepsComponent";
 import "@fontsource/montserrat/900.css";
 import FeatureCard from "@/components/FeatureCard";
-import Footer from "@/components/Footer";
 
 const features = [
   {
@@ -40,10 +39,10 @@ export default function Home() {
     <div>
       <header
         id="home"
-        className="h-screen flex flex-col justify-center items-center text-center px-4 bg-cover bg-center bg-fixed"
+        className="h-[70vh] flex flex-col justify-center items-center text-center px-4 bg-cover bg-center bg-fixed"
         style={{ backgroundImage: "url('/assets/car.png')" }}
       >
-        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="h-[70vh] absolute inset-0 bg-black opacity-80"></div>
         <div className="relative z-10">
           {/* Main Heading */}
           <h1 className="font-[900] text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-shadow-black text-center px-4">
@@ -101,7 +100,7 @@ export default function Home() {
         </p>
 
         <div>
-          <h2 className="text-center text-2xl font-bold mb-6">How It Works</h2>
+          <h2 className="text-center text-2xl font-bold mb-6">How It Works?</h2>
           <StepsComponent />
         </div>
       </section>
