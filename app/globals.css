@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Montserrat", sans-serif;
+}
+
+@keyframes colorChange {
+  0% {
+    color: #008000;
+  } /* Green */
+  50% {
+    color: #fd100c;
+  } /* Yellow */
+  100% {
+    color: #ff9e2a;
+  } /* Green */
+}
+
+.animate-gradient {
+  animation: colorChange 20s infinite alternate;
+}
+
+@layer utilities {
+  .text-shadow-black {
+    text-shadow: 2px 2px 7px rgba(8, 8, 8, 0.781);
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
