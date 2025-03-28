@@ -6,7 +6,6 @@ import Dropdown from "./Dropdown";
 import Modal from "./Modal";
 import Link from "next/link";
 import { FiUser, FiMenu, FiX } from "react-icons/fi";
-import router from "next/router";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,26 +15,26 @@ const Navbar: React.FC = () => {
   // New state for modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<{
-    title: string;
-    address?: string;
-    description?: string;
-    hours?: string;
-    image?: string;
-    coordinates: {
-      latitude: number;
-      longitude: number;
-    };
-  }>({
-    title: "",
-    address: "",
-    description: "",
-    hours: "",
-    image: "",
-    coordinates: {
-      latitude: 14.5995, // Default to Manila
-      longitude: 120.9842,
-    },
-  });
+      title: string;
+      address?: string;
+      description?: string;
+      hours?: string;
+      image?: string;
+      coordinates: {
+        latitude: number;
+        longitude: number;
+      };
+    }>({
+      title: '',
+      address: '',
+      description: '',
+      hours: '',
+      image: '',
+      coordinates: {
+        latitude: 14.5995, // Default to Manila
+        longitude: 120.9842
+      }
+    });
 
   // Handle navbar visibility on scroll
   useEffect(() => {
@@ -71,7 +70,7 @@ const Navbar: React.FC = () => {
     coordinates: {
       latitude: number;
       longitude: number;
-    };
+    }
   }) => {
     setSelectedLocation(location);
     setIsModalOpen(true);
@@ -85,9 +84,8 @@ const Navbar: React.FC = () => {
           backgroundColor: "rgba(73, 73, 73, 0.36)",
           backdropFilter: "blur(5px)",
         }}
-        className={`text-white p-4 fixed top-0 w-full z-50 transition-transform duration-300 ${
-          isVisible ? "translate-y-0" : "-translate-y-full"
-        }`}
+        className={`text-white p-4 fixed top-0 w-full z-50 transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
+          }`}
       >
         <div className="container mx-auto flex justify-between items-center">
           {/* Brand Name */}
@@ -106,13 +104,7 @@ const Navbar: React.FC = () => {
           {/* Desktop Menu (Centered Links) */}
           <ul className="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
             <li className="hover:text-gray-300 font-semibold transition">
-              <button
-                onClick={() => {
-                  window.location.href = "/";
-                }}
-              >
-                Discover
-              </button>
+              <button onClick={() => handleScroll("about")}>About</button>
             </li>
             <Dropdown
               title="Locations"
@@ -120,110 +112,83 @@ const Navbar: React.FC = () => {
                 { label: "Area Availability", isHeader: true },
                 {
                   label: "Metro Manila",
-                  onClick: () =>
-                    openLocationModal({
-                      title: "Metro Manila",
-                      address: "Various locations across Metro Manila",
-                      description:
-                        "Our service covers multiple districts in Metro Manila.",
-                      hours: "Monday-Sunday: 8 AM - 8 PM",
-                      coordinates: {
-                        latitude: 14.5995,
-                        longitude: 120.9842,
-                      },
-                    }),
+                  onClick: () => openLocationModal({
+                    title: "Metro Manila",
+                    address: "Various locations across Metro Manila",
+                    description: "Our service covers multiple districts in Metro Manila.",
+                    hours: "Monday-Sunday: 8 AM - 8 PM",
+                    coordinates: {
+                      latitude: 14.5995,
+                      longitude: 120.9842
+                    }
+                  })
                 },
                 {
                   label: "Tagaytay City",
-                  onClick: () =>
-                    openLocationModal({
-                      title: "Tagaytay City",
-                      address: "Tagaytay Highlands, Tagaytay City",
-                      description:
-                        "Serving the scenic Tagaytay area with our premium services.",
-                      hours: "Monday-Sunday: 9 AM - 7 PM",
-                      coordinates: {
-                        latitude: 14.1096,
-                        longitude: 120.9344,
-                      },
-                    }),
+                  onClick: () => openLocationModal({
+                    title: "Tagaytay City",
+                    address: "Tagaytay Highlands, Tagaytay City",
+                    description: "Serving the scenic Tagaytay area with our premium services.",
+                    hours: "Monday-Sunday: 9 AM - 7 PM",
+                    coordinates: {
+                      latitude: 14.1096,
+                      longitude: 120.9344
+                    }
+                  })
                 },
                 { label: "Office Locations", isHeader: true },
                 {
                   label: "Quezon City - Main Office",
-                  onClick: () =>
-                    openLocationModal({
-                      title: "Quezon City - Main Office",
-                      address: "123 Main Street, Quezon City",
-                      description:
-                        "Our primary headquarters and central operations hub.",
-                      hours: "Weekdays: 9 AM - 6 PM, Weekends: Closed",
-                      coordinates: {
-                        latitude: 14.6507,
-                        longitude: 121.0388,
-                      },
-                    }),
+                  onClick: () => openLocationModal({
+                    title: "Quezon City - Main Office",
+                    address: "123 Main Street, Quezon City",
+                    description: "Our primary headquarters and central operations hub.",
+                    hours: "Weekdays: 9 AM - 6 PM, Weekends: Closed",
+                    coordinates: {
+                      latitude: 14.6507,
+                      longitude: 121.0388
+                    }
+                  })
                 },
                 {
                   label: "BGC - Satelite Office",
-                  onClick: () =>
-                    openLocationModal({
-                      title: "BGC - Satellite Office",
-                      address: "456 Corporate Plaza, BGC, Taguig",
-                      description:
-                        "Our satellite office in the heart of Bonifacio Global City.",
-                      hours: "Weekdays: 8 AM - 5 PM, Weekends: By Appointment",
-                      coordinates: {
-                        latitude: 14.5547,
-                        longitude: 121.0484,
-                      },
-                    }),
+                  onClick: () => openLocationModal({
+                    title: "BGC - Satellite Office",
+                    address: "456 Corporate Plaza, BGC, Taguig",
+                    description: "Our satellite office in the heart of Bonifacio Global City.",
+                    hours: "Weekdays: 8 AM - 5 PM, Weekends: By Appointment",
+                    coordinates: {
+                      latitude: 14.5547,
+                      longitude: 121.0484
+                    }
+                  })
                 },
                 {
                   label: "Montalban Rizal",
-                  onClick: () =>
-                    openLocationModal({
-                      title: "Montalban Rizal",
-                      address: "789 Business Road, Montalban Rizal",
-                      description: "Expanding our services to Montalban Rizal.",
-                      hours: "Monday-Sunday: 10 AM - 6 PM",
-                      coordinates: {
-                        latitude: 14.6507,
-                        longitude: 121.1854,
-                      },
-                    }),
+                  onClick: () => openLocationModal({
+                    title: "Montalban Rizal",
+                    address: "789 Business Road, Montalban Rizal",
+                    description: "Expanding our services to Montalban Rizal.",
+                    hours: "Monday-Sunday: 10 AM - 6 PM",
+                    coordinates: {
+                      latitude: 14.6507,
+                      longitude: 121.1854
+                    }
+                  })
                 },
               ]}
             />
             <Dropdown
               title="Policies"
               menuItems={[
-                {
-                  label: "Privacy Policy",
-                  onClick: () => (window.location.href = "/privacy-policy"),
-                },
-                {
-                  label: "Code of Conduct",
-                  onClick: () => (window.location.href = "/code-of-conduct"),
-                },
-                {
-                  label: "Terms of Service",
-                  onClick: () => (window.location.href = "/terms-of-service"),
-                },
-                {
-                  label: "Discounts",
-                  onClick: () => (window.location.href = "/discounts"),
-                },
+                { label: "Privacy Policy" },
+                { label: "Code of Conduct" },
+                { label: "Terms of Service" },
+                { label: "Coupon & Discounts" },
               ]}
             />
             <li className="hover:text-gray-300 font-semibold transition">
-              <button
-                onClick={() => {
-                  window.location.href = "/help-centre";
-                }}
-              >
-                Help Centre
-              </button>
+              <button onClick={() => handleScroll("help")}>Help Centre</button>
             </li>
           </ul>
 
@@ -250,12 +215,10 @@ const Navbar: React.FC = () => {
             <ul className="flex flex-col items-center space-y-4">
               <li>
                 <button
-                  onClick={() => {
-                    window.location.href = "/";
-                  }}
+                  onClick={() => handleScroll("about")}
                   className="text-white hover:text-gray-300"
                 >
-                  Discover
+                  About
                 </button>
               </li>
               <Dropdown
@@ -264,109 +227,84 @@ const Navbar: React.FC = () => {
                   { label: "Area Availability", isHeader: true },
                   {
                     label: "Metro Manila",
-                    onClick: () =>
-                      openLocationModal({
-                        title: "Metro Manila",
-                        address: "Various locations across Metro Manila",
-                        description:
-                          "Our service covers multiple districts in Metro Manila.",
-                        hours: "Monday-Sunday: 8 AM - 8 PM",
-                        coordinates: {
-                          latitude: 14.6091,
-                          longitude: 121.0223,
-                        },
-                      }),
+                    onClick: () => openLocationModal({
+                      title: "Metro Manila",
+                      address: "Various locations across Metro Manila",
+                      description: "Our service covers multiple districts in Metro Manila.",
+                      hours: "Monday-Sunday: 8 AM - 8 PM",
+                      coordinates: {
+                        latitude: 14.5995,
+                        longitude: 120.9842
+                      }
+                    })
                   },
                   {
                     label: "Tagaytay City",
-                    onClick: () =>
-                      openLocationModal({
-                        title: "Tagaytay City",
-                        address: "Tagaytay Highlands, Tagaytay City",
-                        description:
-                          "Serving the scenic Tagaytay area with our premium services.",
-                        hours: "Monday-Sunday: 9 AM - 7 PM",
-                        coordinates: {
-                          latitude: 14.1096,
-                          longitude: 120.9344,
-                        },
-                      }),
+                    onClick: () => openLocationModal({
+                      title: "Tagaytay City",
+                      address: "Tagaytay Highlands, Tagaytay City",
+                      description: "Serving the scenic Tagaytay area with our premium services.",
+                      hours: "Monday-Sunday: 9 AM - 7 PM",
+                      coordinates: {
+                        latitude: 14.1096,
+                        longitude: 120.9344
+                      }
+                    })
                   },
                   { label: "Office Locations", isHeader: true },
                   {
                     label: "Quezon City - Main Office",
-                    onClick: () =>
-                      openLocationModal({
-                        title: "Quezon City - Main Office",
-                        address: "123 Main Street, Quezon City",
-                        description:
-                          "Our primary headquarters and central operations hub.",
-                        hours: "Weekdays: 9 AM - 6 PM, Weekends: Closed",
-                        coordinates: {
-                          latitude: 14.6507,
-                          longitude: 121.0388,
-                        },
-                      }),
+                    onClick: () => openLocationModal({
+                      title: "Quezon City - Main Office",
+                      address: "123 Main Street, Quezon City",
+                      description: "Our primary headquarters and central operations hub.",
+                      hours: "Weekdays: 9 AM - 6 PM, Weekends: Closed",
+                      coordinates: {
+                        latitude: 14.6507,
+                        longitude: 121.0388
+                      }
+                    })
                   },
                   {
                     label: "BGC - Satelite Office",
-                    onClick: () =>
-                      openLocationModal({
-                        title: "BGC - Satellite Office",
-                        address: "456 Corporate Plaza, BGC, Taguig",
-                        description:
-                          "Our satellite office in the heart of Bonifacio Global City.",
-                        hours:
-                          "Weekdays: 8 AM - 5 PM, Weekends: By Appointment",
-                        coordinates: {
-                          latitude: 14.5547,
-                          longitude: 121.0484,
-                        },
-                      }),
+                    onClick: () => openLocationModal({
+                      title: "BGC - Satellite Office",
+                      address: "456 Corporate Plaza, BGC, Taguig",
+                      description: "Our satellite office in the heart of Bonifacio Global City.",
+                      hours: "Weekdays: 8 AM - 5 PM, Weekends: By Appointment",
+                      coordinates: {
+                        latitude: 14.5547,
+                        longitude: 121.0484
+                      }
+                    })
                   },
                   {
                     label: "Montalban Rizal",
-                    onClick: () =>
-                      openLocationModal({
-                        title: "Montalban Rizal",
-                        address: "789 Business Road, Montalban Rizal",
-                        description:
-                          "Expanding our services to Montalban Rizal.",
-                        hours: "Monday-Sunday: 10 AM - 6 PM",
-                        coordinates: {
-                          latitude: 14.6507,
-                          longitude: 121.1854,
-                        },
-                      }),
+                    onClick: () => openLocationModal({
+                      title: "Montalban Rizal",
+                      address: "789 Business Road, Montalban Rizal",
+                      description: "Expanding our services to Montalban Rizal.",
+                      hours: "Monday-Sunday: 10 AM - 6 PM",
+                      coordinates: {
+                        latitude: 14.6507,
+                        longitude: 121.1854
+                      }
+                    })
                   },
                 ]}
               />
               <Dropdown
                 title="Policies"
                 menuItems={[
-                  {
-                    label: "Privacy Policy",
-                    onClick: () => (window.location.href = "/privacy-policy"),
-                  },
-                  {
-                    label: "Code of Conduct",
-                    onClick: () => (window.location.href = "/code-of-conduct"),
-                  },
-                  {
-                    label: "Terms of Service",
-                    onClick: () => (window.location.href = "/terms-of-service"),
-                  },
-                  {
-                    label: "Discounts",
-                    onClick: () => (window.location.href = "/discounts"),
-                  },
+                  { label: "Privacy Policy" },
+                  { label: "Code of Conduct" },
+                  { label: "Terms of Service" },
+                  { label: "Coupon & Discounts" },
                 ]}
               />
               <li>
                 <button
-                  onClick={() => {
-                    window.location.href = "/help-centre";
-                  }}
+                  onClick={() => handleScroll("help")}
                   className="text-white hover:text-gray-300"
                 >
                   Help Centre
